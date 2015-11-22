@@ -53,11 +53,18 @@
                                 <rect key="frame" x="141" y="361" width="38" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="login" destination="BYZ-38-t0r" eventType="touchUpInside" id="suB-9l-EUi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="textPassword" destination="uxb-Fy-t9z" id="JKk-vk-noc"/>
+                        <outlet property="textUserName" destination="guO-78-JGI" id="ilL-D1-GQm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

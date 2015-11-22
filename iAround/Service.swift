@@ -12,9 +12,12 @@ import Foundation
 
 public class Service{
     static let Instance : Service = Service();
+    private let rootUrl : NSString = NSString(string : "http://52.32.120.191:8000/IEvent/EventsManager/reset/");
     private init(){}
     
-    private func login(userEntity : UserEntity){
-        
+    public func loginUrl() -> NSURL{
+        return NSURL(string : ((rootUrl as String) + "Login"))!;
     }
+    
+    
 }

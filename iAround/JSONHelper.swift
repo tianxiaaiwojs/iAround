@@ -26,11 +26,30 @@ class JSONHelper{
     private init(){};
     
     
-    private func parseJSONToEntity(){
+    func parseJSONToEntity(data : NSData){
+        do{
+            let jsonOptional : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+        
+            if let json = jsonOptional as? Dictionary<String, AnyObject>
+            {
+                if let entityName = json["entityName"] as AnyObject? as? String{
+                    if(entityName == "UserEntity")
+                    {
+                        UserEntity.parseJsonToEntity(json["detail"] as AnyObject? as! NSData)
+                    }
+                }
+            }
+        }
+        catch{
+            
+        }
         
     }
     
-    private func parseEntityToJSON(){
-        
+    func parseEntityToJSON(entity : Entity) ->NSString{
+        if(entity.getObjectName() == "UserEntity"){
+            return UserEntity.parseEntityToJson(entity as! UserEntity);
+        }
+        return NSString(string: "" as String)
     }
 }

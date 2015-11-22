@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "iAround.LoginViewController.login (iAround.LoginViewController)() -&gt; ():LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "{\&quot;Name\&quot;:\&quot;beibei\&quot;,\&quot;Password\&quot;:\&quot;123456\&quot;}">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

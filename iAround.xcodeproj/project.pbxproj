@@ -18,6 +18,8 @@
 		11AAFE841C00220F003FEFF1 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE831C00220F003FEFF1 /* Service.swift */; };
 		11AAFE871C00290C003FEFF1 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE861C00290C003FEFF1 /* UserEntity.swift */; };
 		11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE891C002994003FEFF1 /* JSONHelper.swift */; };
+		11BE53651C0228F20020D9A6 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53641C0228F20020D9A6 /* Entity.swift */; };
+		11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53661C0245E70020D9A6 /* EntityImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		11AAFE831C00220F003FEFF1 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		11AAFE861C00290C003FEFF1 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		11AAFE891C002994003FEFF1 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		11BE53641C0228F20020D9A6 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		11BE53661C0245E70020D9A6 /* EntityImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				11AAFE861C00290C003FEFF1 /* UserEntity.swift */,
+				11BE53641C0228F20020D9A6 /* Entity.swift */,
+				11BE53661C0245E70020D9A6 /* EntityImpl.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -230,7 +236,9 @@
 				11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */,
 				11AAFE611C0018E9003FEFF1 /* LoginViewController.swift in Sources */,
 				11AAFE871C00290C003FEFF1 /* UserEntity.swift in Sources */,
+				11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */,
 				11AAFE821C00199B003FEFF1 /* MapsViewController.swift in Sources */,
+				11BE53651C0228F20020D9A6 /* Entity.swift in Sources */,
 				11AAFE841C00220F003FEFF1 /* Service.swift in Sources */,
 				11AAFE5F1C0018E9003FEFF1 /* AppDelegate.swift in Sources */,
 				11AAFE671C0018E9003FEFF1 /* iAround.xcdatamodeld in Sources */,
@@ -421,6 +429,7 @@
 				11AAFE7D1C0018E9003FEFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11AAFE7E1C0018E9003FEFF1 /* Build configuration list for PBXNativeTarget "iAroundTests" */ = {
 			isa = XCConfigurationList;
@@ -429,6 +438,7 @@
 				11AAFE801C0018E9003FEFF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
