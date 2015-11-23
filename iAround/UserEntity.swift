@@ -97,10 +97,10 @@ class UserEntity : EntityImpl ,Entity{
         do{
             
             let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonCompatibleArray, options: NSJSONWritingOptions.PrettyPrinted)
-            var jsonText = NSString(data: jsonData,encoding: NSUTF8StringEncoding)
+            let jsonText = NSString(data: jsonData,encoding: NSUTF8StringEncoding)
             
-            //let jsonSummary = self.addHeadJson("UserEntity", jsonText : <#T##NSString#>)
-            return jsonText!;
+            let jsonSummary = self.addHeadJson("UserEntity", json : jsonText!)
+            return jsonSummary;
         }catch{
             
         }
