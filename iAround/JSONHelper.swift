@@ -45,11 +45,4 @@ class JSONHelper{
         }
         
     }
-    
-    func parseEntityToJSON(entity : Entity) ->NSString{
-        if(entity.getObjectName() == "UserEntity"){
-            return UserEntity.parseEntityToJson(entity as! UserEntity);
-        }
-        return NSString(string: "" as String)
-    }
 }

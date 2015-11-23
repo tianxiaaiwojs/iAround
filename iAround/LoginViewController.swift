@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
         
         let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
 
-        let postData : NSData! = JSONHelper.Instance.parseEntityToJSON(user).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
+        let postData : NSData! = user.parseEntityToJson().dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
             //
         //let t = "{\"Name\":\"beibei\",\"Password\":\"123456\"}";
         

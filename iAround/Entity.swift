@@ -10,7 +10,7 @@ import Foundation
 
 protocol Entity{
     static func parseJsonToEntity(data : NSData) ->Entity;
-    static func parseEntityToJson(entity : Entity) ->NSString;
+    func parseEntityToJson() ->NSString;
     
     func getObjectName() ->NSString;
 }
