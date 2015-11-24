@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     
     var conn:NSURLConnection!;
     
-    
+    var data : NSData!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,13 +37,13 @@ class LoginViewController: UIViewController {
         
         request.HTTPMethod="POST";
         
-        let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
+        //let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
 
-        let postData : NSData! = user.parseEntityToJson().dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
+        //let postData : NSData! = user.parseEntityToJson().dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
             //
-        //let t = "{\"Name\":\"beibei\",\"Password\":\"123456\"}";
+        let t = "{\"Name\":\"beibei\",\"Password\":\"123456\"}";
         
-        //let postData : NSData! = t.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
+        let postData : NSData! = t.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
         request.HTTPBody = postData
         
         conn = NSURLConnection(request: request, delegate: self)
@@ -55,11 +55,12 @@ class LoginViewController: UIViewController {
     func connection(didReceiveResponse: NSURLConnection!, didReceiveResponse response: NSURLResponse!) {
         print("didReceiveResponse")
         print(response);
+        
     }
     
     func connection(connection: NSURLConnection!, didReceiveData conData: NSData!) {
         
-        //self.data = NSString(data: conData, encoding: NSUTF8StringEncoding);
+        self.data = conData;
         //self.buffer.appendData(conData);
         
         
@@ -71,20 +72,14 @@ class LoginViewController: UIViewController {
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         // Continue the implementation to parse the
         // returned data
-        /*connection.cancel();
+        connection.cancel();
         
         //var data : NSString! = NSString(data: self.buffer, encoding: NSUTF8StringEncoding);
         
-        data = data.stringByReplacingOccurrencesOfString("&gt;", withString: ">");
-        data = data.stringByReplacingOccurrencesOfString("&lt;", withString: "<");
+        var dataDic = JSONHelper.Instance.parseJSONToDictionary(self.data)
         
-        let nData : NSData! = data.dataUsingEncoding(NSUTF8StringEncoding);
-        
-        parser = NSXMLParser(data: nData!)
-        parser.delegate=self
-        parser.parse()*/
-        
-        
+        print(dataDic);
+        self.performSegueWithIdentifier("loginSuccess", sender: nil)
     }
     
 

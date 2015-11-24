@@ -18,8 +18,11 @@
 		11AAFE841C00220F003FEFF1 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE831C00220F003FEFF1 /* Service.swift */; };
 		11AAFE871C00290C003FEFF1 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE861C00290C003FEFF1 /* UserEntity.swift */; };
 		11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE891C002994003FEFF1 /* JSONHelper.swift */; };
+		11ADA4C41C04DB2C0017A6D0 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4C31C04DB2C0017A6D0 /* EventEntity.swift */; };
 		11BE53651C0228F20020D9A6 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53641C0228F20020D9A6 /* Entity.swift */; };
 		11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53661C0245E70020D9A6 /* EntityImpl.swift */; };
+		11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE53681C0366740020D9A6 /* MapKit.framework */; };
+		11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE536A1C0378020020D9A6 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +51,11 @@
 		11AAFE831C00220F003FEFF1 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		11AAFE861C00290C003FEFF1 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		11AAFE891C002994003FEFF1 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
+		11ADA4C31C04DB2C0017A6D0 /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
 		11BE53641C0228F20020D9A6 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		11BE53661C0245E70020D9A6 /* EntityImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImpl.swift; sourceTree = "<group>"; };
+		11BE53681C0366740020D9A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		11BE536A1C0378020020D9A6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */,
+				11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +81,8 @@
 		11AAFE521C0018E9003FEFF1 = {
 			isa = PBXGroup;
 			children = (
+				11BE536A1C0378020020D9A6 /* CoreLocation.framework */,
+				11BE53681C0366740020D9A6 /* MapKit.framework */,
 				11AAFE5D1C0018E9003FEFF1 /* iAround */,
 				11AAFE751C0018E9003FEFF1 /* iAroundTests */,
 				11AAFE5C1C0018E9003FEFF1 /* Products */,
@@ -121,6 +131,7 @@
 				11AAFE861C00290C003FEFF1 /* UserEntity.swift */,
 				11BE53641C0228F20020D9A6 /* Entity.swift */,
 				11BE53661C0245E70020D9A6 /* EntityImpl.swift */,
+				11ADA4C31C04DB2C0017A6D0 /* EventEntity.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 				TargetAttributes = {
 					11AAFE5A1C0018E9003FEFF1 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 83GFZ4ZKFR;
 					};
 					11AAFE711C0018E9003FEFF1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -234,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */,
+				11ADA4C41C04DB2C0017A6D0 /* EventEntity.swift in Sources */,
 				11AAFE611C0018E9003FEFF1 /* LoginViewController.swift in Sources */,
 				11AAFE871C00290C003FEFF1 /* UserEntity.swift in Sources */,
 				11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */,
@@ -368,10 +381,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iAround/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -379,10 +396,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iAround/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

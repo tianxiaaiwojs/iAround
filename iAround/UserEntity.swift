@@ -10,11 +10,11 @@ import Foundation
 
 class UserEntity : EntityImpl ,Entity{
     var personId : Int
-    var primaryId : String
-    var password : String
-    var name : String
-    var gender : String
-    var contactNo : String
+    var primaryId : NSString
+    var password : NSString
+    var name : NSString
+    var gender : NSString
+    var contactNo : NSString
     
     static private var personIdColumnName = "PersonId"
     static private var primaryIdColumnName = "PrimaryId"
@@ -23,7 +23,7 @@ class UserEntity : EntityImpl ,Entity{
     static private var genderColumnName = "Gender"
     static private var contactNoColumnName = "ContactNo"
     
-    init(personId : Int, primaryId : String, password : String, name : String, gender : String, contactNo : String){
+    init(personId : Int, primaryId : NSString, password : NSString, name : NSString, gender : NSString, contactNo : NSString){
         self.personId = personId;
         self.primaryId = primaryId;
         self.password = password;

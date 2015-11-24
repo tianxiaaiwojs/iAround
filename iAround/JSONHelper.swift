@@ -26,7 +26,7 @@ class JSONHelper{
     private init(){};
     
     
-    func parseJSONToEntity(data : NSData){
+    func parseJSONToEntity(data : NSData) -> Entity?{
         do{
             let jsonOptional : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
         
@@ -35,7 +35,7 @@ class JSONHelper{
                 if let entityName = json["entityName"] as AnyObject? as? String{
                     if(entityName == "UserEntity")
                     {
-                        UserEntity.parseJsonToEntity(json["detail"] as AnyObject? as! NSData)
+                        return UserEntity.parseJsonToEntity(json["detail"] as AnyObject? as! NSData)
                     }
                 }
             }
@@ -43,6 +43,18 @@ class JSONHelper{
         catch{
             
         }
-        
+        return nil;
+    }
+    
+    func parseJSONToDictionary(data : NSData) ->NSDictionary?{
+        do{
+            let jsonOptional : NSDictionary! = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! NSDictionary
+            
+            return jsonOptional;
+        }
+        catch{
+            
+        }
+        return nil;
     }
 }
