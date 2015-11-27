@@ -19,6 +19,13 @@
 		11AAFE871C00290C003FEFF1 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE861C00290C003FEFF1 /* UserEntity.swift */; };
 		11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AAFE891C002994003FEFF1 /* JSONHelper.swift */; };
 		11ADA4C41C04DB2C0017A6D0 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4C31C04DB2C0017A6D0 /* EventEntity.swift */; };
+		11ADA4C71C08BE910017A6D0 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4C61C08BE910017A6D0 /* PinAnnotation.swift */; };
+		11ADA4CA1C08C0270017A6D0 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4C91C08C0270017A6D0 /* Common.swift */; };
+		11ADA4CE1C08C1670017A6D0 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4CD1C08C1670017A6D0 /* EventType.swift */; };
+		11ADA4D01C08CDF00017A6D0 /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4CF1C08CDF00017A6D0 /* sports.png */; };
+		11ADA4D51C08D16F0017A6D0 /* community.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4D21C08D16F0017A6D0 /* community.png */; };
+		11ADA4D61C08D16F0017A6D0 /* party.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4D31C08D16F0017A6D0 /* party.png */; };
+		11ADA4D71C08D16F0017A6D0 /* travel.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4D41C08D16F0017A6D0 /* travel.png */; };
 		11BE53651C0228F20020D9A6 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53641C0228F20020D9A6 /* Entity.swift */; };
 		11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53661C0245E70020D9A6 /* EntityImpl.swift */; };
 		11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE53681C0366740020D9A6 /* MapKit.framework */; };
@@ -52,6 +59,13 @@
 		11AAFE861C00290C003FEFF1 /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		11AAFE891C002994003FEFF1 /* JSONHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHelper.swift; sourceTree = "<group>"; };
 		11ADA4C31C04DB2C0017A6D0 /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
+		11ADA4C61C08BE910017A6D0 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		11ADA4C91C08C0270017A6D0 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		11ADA4CD1C08C1670017A6D0 /* EventType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
+		11ADA4CF1C08CDF00017A6D0 /* sports.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sports.png; path = Resources/sports.png; sourceTree = "<group>"; };
+		11ADA4D21C08D16F0017A6D0 /* community.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = community.png; path = Resources/community.png; sourceTree = "<group>"; };
+		11ADA4D31C08D16F0017A6D0 /* party.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = party.png; path = Resources/party.png; sourceTree = "<group>"; };
+		11ADA4D41C08D16F0017A6D0 /* travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = travel.png; path = Resources/travel.png; sourceTree = "<group>"; };
 		11BE53641C0228F20020D9A6 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		11BE53661C0245E70020D9A6 /* EntityImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImpl.swift; sourceTree = "<group>"; };
 		11BE53681C0366740020D9A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +115,8 @@
 		11AAFE5D1C0018E9003FEFF1 /* iAround */ = {
 			isa = PBXGroup;
 			children = (
+				11ADA4D11C08CDF40017A6D0 /* Resources */,
+				11ADA4C51C08BE4F0017A6D0 /* UIHelper */,
 				11AAFE881C002974003FEFF1 /* Util */,
 				11AAFE851C0028F3003FEFF1 /* Entity */,
 				11AAFE5E1C0018E9003FEFF1 /* AppDelegate.swift */,
@@ -140,8 +156,29 @@
 			isa = PBXGroup;
 			children = (
 				11AAFE891C002994003FEFF1 /* JSONHelper.swift */,
+				11ADA4C91C08C0270017A6D0 /* Common.swift */,
+				11ADA4CD1C08C1670017A6D0 /* EventType.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		11ADA4C51C08BE4F0017A6D0 /* UIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				11ADA4C61C08BE910017A6D0 /* PinAnnotation.swift */,
+			);
+			name = UIHelper;
+			sourceTree = "<group>";
+		};
+		11ADA4D11C08CDF40017A6D0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11ADA4D21C08D16F0017A6D0 /* community.png */,
+				11ADA4D31C08D16F0017A6D0 /* party.png */,
+				11ADA4D41C08D16F0017A6D0 /* travel.png */,
+				11ADA4CF1C08CDF00017A6D0 /* sports.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +262,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11ADA4D01C08CDF00017A6D0 /* sports.png in Resources */,
 				11AAFE6C1C0018E9003FEFF1 /* LaunchScreen.storyboard in Resources */,
+				11ADA4D61C08D16F0017A6D0 /* party.png in Resources */,
 				11AAFE691C0018E9003FEFF1 /* Assets.xcassets in Resources */,
+				11ADA4D71C08D16F0017A6D0 /* travel.png in Resources */,
+				11ADA4D51C08D16F0017A6D0 /* community.png in Resources */,
 				11AAFE641C0018E9003FEFF1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,12 +286,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11ADA4C71C08BE910017A6D0 /* PinAnnotation.swift in Sources */,
 				11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */,
 				11ADA4C41C04DB2C0017A6D0 /* EventEntity.swift in Sources */,
 				11AAFE611C0018E9003FEFF1 /* LoginViewController.swift in Sources */,
+				11ADA4CA1C08C0270017A6D0 /* Common.swift in Sources */,
 				11AAFE871C00290C003FEFF1 /* UserEntity.swift in Sources */,
 				11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */,
 				11AAFE821C00199B003FEFF1 /* MapsViewController.swift in Sources */,
+				11ADA4CE1C08C1670017A6D0 /* EventType.swift in Sources */,
 				11BE53651C0228F20020D9A6 /* Entity.swift in Sources */,
 				11AAFE841C00220F003FEFF1 /* Service.swift in Sources */,
 				11AAFE5F1C0018E9003FEFF1 /* AppDelegate.swift in Sources */,

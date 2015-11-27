@@ -19,5 +19,7 @@ public class Service{
         return NSURL(string : ((rootUrl as String) + "Login"))!;
     }
     
-    
+    public func retriveEventsUrl() -> NSURL{
+        return NSURL(string : ((rootUrl as String) + "RetriveEvents/{0}/{1}/{2}"))!
+    }
 }

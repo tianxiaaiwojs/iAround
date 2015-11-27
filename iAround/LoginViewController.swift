@@ -8,12 +8,14 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,NSURLSessionDataDelegate {
     
     @IBOutlet weak var textUserName : UITextField!;
     @IBOutlet weak var textPassword : UITextField!;
     
-    var conn:NSURLConnection!;
+    //var conn:NSURLConnection!;
+    
+    var session : NSURLSession!
     
     var data : NSData!
     override func viewDidLoad() {
@@ -35,7 +37,7 @@ class LoginViewController: UIViewController {
         
         request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
-        request.HTTPMethod="POST";
+        request.HTTPMethod="GET";
         
         //let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
 
@@ -46,41 +48,28 @@ class LoginViewController: UIViewController {
         let postData : NSData! = t.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
         request.HTTPBody = postData
         
-        conn = NSURLConnection(request: request, delegate: self)
+        //conn = NSURLConnection(request: request, delegate: self)
         
-        conn.start()
+        //conn.start()
+        
+        
+        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        
+        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        session.dataTaskWithRequest(request).resume()
     }
     
     
-    func connection(didReceiveResponse: NSURLConnection!, didReceiveResponse response: NSURLResponse!) {
-        print("didReceiveResponse")
-        print(response);
-        
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+        print(data)
+        //NSNotificationCenter.defaultCenter().postNotificationName("switchWebView", object:nil)
     }
     
-    func connection(connection: NSURLConnection!, didReceiveData conData: NSData!) {
-        
-        self.data = conData;
-        //self.buffer.appendData(conData);
-        
-        
-    }
-    
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
-        NSLog("%@", error.localizedDescription)
-    }
-    func connectionDidFinishLoading(connection: NSURLConnection!) {
-        // Continue the implementation to parse the
-        // returned data
-        connection.cancel();
-        
-        //var data : NSString! = NSString(data: self.buffer, encoding: NSUTF8StringEncoding);
-        
-        var dataDic = JSONHelper.Instance.parseJSONToDictionary(self.data)
-        
-        print(dataDic);
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        NSNotificationCenter.defaultCenter().postNotificationName("switchResultView", object:nil)
         self.performSegueWithIdentifier("loginSuccess", sender: nil)
     }
+    
     
 
 }

@@ -8,18 +8,20 @@
 
 import Foundation
 
-class EventEntity{
+class EventEntity : EntityImpl{
     var eventId : Int
     var holderId : Int
+    var titile : NSString
     var holderDate : NSDate
     var geoCode : NSString
     var type : NSString
     var numberOfJoin : Int
     var decription : NSString
     
-    init(eventId : Int, holderId : Int, holderDate : NSDate, geoCode : NSString, type : NSString, numberOfJoin : Int, decription : NSString){
+    init(eventId : Int, holderId : Int, title : NSString, holderDate : NSDate, geoCode : NSString, type : NSString, numberOfJoin : Int, decription : NSString){
         self.eventId = eventId;
         self.holderId = holderId;
+        self.titile = title;
         self.holderDate = holderDate;
         self.geoCode = geoCode;
         self.type = type;
