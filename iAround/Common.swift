@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit;
+import CoreData;
 
 class Common{
     static func getImage(type : String) -> UIImage{
@@ -23,5 +24,23 @@ class Common{
             return UIImage(named: "community.png")!;
         }
         
+    }
+    
+    static func getUserInfo() -> UserInfo?{
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        let userInfo = NSEntityDescription.entityForName("UserInfo", inManagedObjectContext: managedObjectContext)
+        let request = NSFetchRequest();
+        request.entity = userInfo;
+        
+        do{
+            let result = try managedObjectContext.executeFetchRequest(request);
+            if(result.count>0){
+                return result[0] as? UserInfo
+            }
+        }catch{
+            //Do Nothing,
+        }
+        return nil;
     }
 }

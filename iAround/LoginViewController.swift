@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController,NSURLSessionDataDelegate {
     
@@ -17,10 +18,24 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
     
     var session : NSURLSession!
     
+    
+    
+    var userInfoObject : UserInfo?;
+    
+    var loginSuccessful : Bool = false;
+    
     var data : NSData!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        userInfoObject = Common.getUserInfo();
+        if(userInfoObject != nil){
+            login((userInfoObject?.loginName)!, password: (userInfoObject?.password)!)
+            if(loginSuccessful){
+                self.performSegueWithIdentifier("loginSuccess", sender: nil)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +45,15 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
     
     
     
+    
     @IBAction func login(){
+        login(textUserName.text!, password: textPassword.text!)
+        if(loginSuccessful){
+            self.performSegueWithIdentifier("loginSuccess", sender: nil)
+        }
+    }
+    
+    func login(loginName : String, password : String) {
         let url = Service.Instance.loginUrl();
         
         let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
@@ -40,10 +63,10 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
         request.HTTPMethod="GET";
         
         //let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
-
+        
         //let postData : NSData! = user.parseEntityToJson().dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
-            //
-        let t = "{\"Name\":\"beibei\",\"Password\":\"123456\"}";
+        //
+        let t = "{\"Name\":\""+loginName+"\",\"Password\":\""+password+"\"}";
         
         let postData : NSData! = t.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
         request.HTTPBody = postData
@@ -67,7 +90,7 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         NSNotificationCenter.defaultCenter().postNotificationName("switchResultView", object:nil)
-        self.performSegueWithIdentifier("loginSuccess", sender: nil)
+        loginSuccessful = true;
     }
     
     

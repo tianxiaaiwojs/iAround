@@ -24,7 +24,7 @@
                   moduleName = "iAround"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZHUBEIBEI/Project/iAround/iAround/MapsViewController.swift"
-                  timestampString = "470080189.535758"
+                  timestampString = "470346481.614421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -39,7 +39,7 @@
                   moduleName = "iAround"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZHUBEIBEI/Project/iAround/iAround/MapsViewController.swift"
-                  timestampString = "470080189.536341"
+                  timestampString = "470346481.614904"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -54,7 +54,7 @@
                   moduleName = "iAround"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZHUBEIBEI/Project/iAround/iAround/MapsViewController.swift"
-                  timestampString = "470080189.536674"
+                  timestampString = "470346481.615227"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -119,45 +119,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iAround/LoginViewController.swift"
-            timestampString = "469913882.742149"
+            timestampString = "470346480.595606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "LoginViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iAround/LoginViewController.swift"
-            timestampString = "470072921.515858"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "login()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iAround/LoginViewController.swift"
-            timestampString = "469914370.521179"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "login()"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -285,6 +253,22 @@
             startingLineNumber = "74"
             endingLineNumber = "74"
             landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iAround/LoginViewController.swift"
+            timestampString = "470346288.603756"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

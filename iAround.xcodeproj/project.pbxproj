@@ -26,6 +26,9 @@
 		11ADA4D51C08D16F0017A6D0 /* community.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4D21C08D16F0017A6D0 /* community.png */; };
 		11ADA4D61C08D16F0017A6D0 /* party.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4D31C08D16F0017A6D0 /* party.png */; };
 		11ADA4D71C08D16F0017A6D0 /* travel.png in Resources */ = {isa = PBXBuildFile; fileRef = 11ADA4D41C08D16F0017A6D0 /* travel.png */; };
+		11ADA4DE1C08E4800017A6D0 /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4DC1C08E4800017A6D0 /* UserInfo+CoreDataProperties.swift */; };
+		11ADA4DF1C08E4800017A6D0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADA4DD1C08E4800017A6D0 /* UserInfo.swift */; };
+		11ADA4E11C08E54C0017A6D0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11ADA4E01C08E54C0017A6D0 /* CoreData.framework */; };
 		11BE53651C0228F20020D9A6 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53641C0228F20020D9A6 /* Entity.swift */; };
 		11BE53671C0245E70020D9A6 /* EntityImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BE53661C0245E70020D9A6 /* EntityImpl.swift */; };
 		11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE53681C0366740020D9A6 /* MapKit.framework */; };
@@ -66,6 +69,9 @@
 		11ADA4D21C08D16F0017A6D0 /* community.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = community.png; path = Resources/community.png; sourceTree = "<group>"; };
 		11ADA4D31C08D16F0017A6D0 /* party.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = party.png; path = Resources/party.png; sourceTree = "<group>"; };
 		11ADA4D41C08D16F0017A6D0 /* travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = travel.png; path = Resources/travel.png; sourceTree = "<group>"; };
+		11ADA4DC1C08E4800017A6D0 /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserInfo+CoreDataProperties.swift"; path = "iAround/UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		11ADA4DD1C08E4800017A6D0 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = iAround/UserInfo.swift; sourceTree = "<group>"; };
+		11ADA4E01C08E54C0017A6D0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		11BE53641C0228F20020D9A6 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		11BE53661C0245E70020D9A6 /* EntityImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImpl.swift; sourceTree = "<group>"; };
 		11BE53681C0366740020D9A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -77,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11ADA4E11C08E54C0017A6D0 /* CoreData.framework in Frameworks */,
 				11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */,
 				11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */,
 			);
@@ -95,6 +102,9 @@
 		11AAFE521C0018E9003FEFF1 = {
 			isa = PBXGroup;
 			children = (
+				11ADA4E01C08E54C0017A6D0 /* CoreData.framework */,
+				11ADA4DC1C08E4800017A6D0 /* UserInfo+CoreDataProperties.swift */,
+				11ADA4DD1C08E4800017A6D0 /* UserInfo.swift */,
 				11BE536A1C0378020020D9A6 /* CoreLocation.framework */,
 				11BE53681C0366740020D9A6 /* MapKit.framework */,
 				11AAFE5D1C0018E9003FEFF1 /* iAround */,
@@ -288,6 +298,7 @@
 			files = (
 				11ADA4C71C08BE910017A6D0 /* PinAnnotation.swift in Sources */,
 				11AAFE8A1C002994003FEFF1 /* JSONHelper.swift in Sources */,
+				11ADA4DE1C08E4800017A6D0 /* UserInfo+CoreDataProperties.swift in Sources */,
 				11ADA4C41C04DB2C0017A6D0 /* EventEntity.swift in Sources */,
 				11AAFE611C0018E9003FEFF1 /* LoginViewController.swift in Sources */,
 				11ADA4CA1C08C0270017A6D0 /* Common.swift in Sources */,
@@ -298,6 +309,7 @@
 				11BE53651C0228F20020D9A6 /* Entity.swift in Sources */,
 				11AAFE841C00220F003FEFF1 /* Service.swift in Sources */,
 				11AAFE5F1C0018E9003FEFF1 /* AppDelegate.swift in Sources */,
+				11ADA4DF1C08E4800017A6D0 /* UserInfo.swift in Sources */,
 				11AAFE671C0018E9003FEFF1 /* iAround.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
