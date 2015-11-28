@@ -103,6 +103,7 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         
         let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
         
+        //return true;
         
         
         if(data != nil){

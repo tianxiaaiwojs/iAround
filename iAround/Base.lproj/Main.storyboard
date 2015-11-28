@@ -249,6 +249,22 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQm-7J-ovT">
+                                        <rect key="frame" x="269" y="27" width="31" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <segue destination="as7-jv-qJn" kind="modal" identifier="addEvent" id="InR-IR-J8H"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gc5-fy-OpW">
+                                        <rect key="frame" x="97" y="28" width="127" height="29"/>
+                                        <animations/>
+                                        <segments>
+                                            <segment title="Going"/>
+                                            <segment title="Created"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -322,6 +338,10 @@
         <scene sceneID="LuE-km-Feq">
             <objects>
                 <viewController id="a9n-rw-fdl" customClass="MapsViewController" customModule="iAround" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vyt-GP-Ejn"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gyz-gs-P5M"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gGw-dD-U7k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
