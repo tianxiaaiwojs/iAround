@@ -183,7 +183,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
             let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
             
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            //request.addValue("application/json", forHTTPHeaderField: "Accept")
             
             request.HTTPMethod="POST";
             
@@ -192,11 +192,18 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
             let postData : NSData! = eventJSONData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
             request.HTTPBody = postData
             
-            let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+            /*let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
             
             session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
             
-            session.dataTaskWithRequest(request).resume()
+            session.dataTaskWithRequest(request).resume()*/
+            
+            var response : NSURLResponse?;
+            
+            let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
+            
+            print(data)
+            
         }
     }
     
