@@ -80,12 +80,15 @@ class EventEntity : EntityImpl, Entity{
     func parseEntityToJson() -> NSString{
         let eventEntity = self;
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/mm/yyyy hh:mm"
+        
         let jsonCompatibleArray = [
             EventEntity.eventIdColumnName : eventEntity.eventId,
             EventEntity.createdByIdColumnName : eventEntity.CreatedById,
             EventEntity.createdByColumnName : eventEntity.createdBy,
             EventEntity.titleColumnName : eventEntity.title,
-            EventEntity.eventDateColumnName : eventEntity.eventDate,
+            EventEntity.eventDateColumnName : dateFormatter.stringFromDate(eventEntity.eventDate),
             EventEntity.latitudeColumnName : eventEntity.latitude,
             EventEntity.longitudeColumnName : eventEntity.longitude,
             EventEntity.eventTypeColumnName : eventEntity.eventType,
@@ -98,7 +101,7 @@ class EventEntity : EntityImpl, Entity{
             let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonCompatibleArray, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonText = NSString(data: jsonData,encoding: NSUTF8StringEncoding)
             
-            let jsonSummary = UserEntity.addHeadJson("EventEntity", json : jsonText!)
+            let jsonSummary = EventEntity.addHeadJson("EventEntity", json : jsonText!)
             return jsonSummary;
         }catch{
             

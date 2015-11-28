@@ -176,7 +176,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
                 events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
             }
         }
-        
+       
         
         return events;
         //session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
