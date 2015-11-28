@@ -21,6 +21,8 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     var currentLocation : CLLocation!
     
+    var event : EventEntity!
+    
     //var events:[EventEntity] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +85,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
             if(control == view.leftCalloutAccessoryView){
                 print("XXX")
                 print(pinAnnotation.title)
+                event = pinAnnotation.event
                 self.performSegueWithIdentifier("showEvent", sender: nil)
             }
         }
@@ -112,7 +115,8 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showEvent" {
-            var nextScene =  segue.destinationViewController;
+            var nextScene =  segue.destinationViewController as! EventDetailViewController;
+            
             
             // Pass the selected object to the new view controller.
             /*if let indexPath = self.tableView.indexPathForSelectedRow() {

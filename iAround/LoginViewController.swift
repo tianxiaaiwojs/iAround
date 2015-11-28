@@ -109,17 +109,21 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         if(data != nil){
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)! as! Dictionary<String, AnyObject>;
             
-            let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
-            var userInfo : UserInfo? = Common.getUserInfo();
-            if userInfo == nil{
-                userInfo = Common.initUserInfo();
+            do{let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
+                var userInfo : UserInfo? = Common.getUserInfo();
+                if userInfo == nil{
+                    userInfo = Common.initUserInfo();
+                }
+                userInfo?.userId = user.personId;
+                userInfo?.loginName = user.name;
+                userInfo?.password = user.password
+                
+                Common.setUserInfo(userInfo!);
+                return true;
             }
-            userInfo?.userId = user.personId;
-            userInfo?.loginName = user.name;
-            userInfo?.password = user.password
-            
-            Common.setUserInfo(userInfo!);
-            return true;
+            catch{
+                return false;
+            }
         }
         
         return false;
