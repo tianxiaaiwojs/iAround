@@ -225,6 +225,9 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="as7-jv-qJn" eventType="editingDidBegin" id="fgL-sr-Nek"/>
+                                </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EBT-Ji-X7u">
                                 <rect key="frame" x="0.0" y="14" width="320" height="44"/>
@@ -251,7 +254,7 @@
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B2G-Bv-fYi">
-                                <rect key="frame" x="6" y="301" width="307" height="128"/>
+                                <rect key="frame" x="6" y="300" width="307" height="128"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -265,7 +268,7 @@
                         <outlet property="buttonDone" destination="OQv-fp-tsN" id="pxR-Oc-ZqD"/>
                         <outlet property="textFieldAddress" destination="NHt-86-437" id="Ch7-4S-mhl"/>
                         <outlet property="textFieldEventType" destination="0Yc-3x-564" id="uMi-cr-kZe"/>
-                        <outlet property="textFieldHoldDate" destination="ef3-K1-lQI" id="vpF-Wo-zDP"/>
+                        <outlet property="textFieldHoldDate" destination="ef3-K1-lQI" id="fTy-Md-5Bf"/>
                         <outlet property="textFieldNoOfJoin" destination="GVu-tG-K9B" id="Jbv-l7-LVZ"/>
                         <outlet property="textFieldTitle" destination="JAt-pz-ciL" id="jJJ-hP-WWN"/>
                         <outlet property="textViewDescription" destination="B2G-Bv-fYi" id="7Ff-JO-BoW"/>
