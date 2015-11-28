@@ -162,7 +162,7 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login" destination="Wez-k7-Ck6" eventType="touchUpInside" id="tud-ca-wtr"/>
-                                    <segue destination="dGg-55-i5m" kind="modal" id="o9g-le-z8n"/>
+                                    <segue destination="dGg-55-i5m" kind="modal" identifier="loginSuccess" id="o9g-le-z8n"/>
                                 </connections>
                             </button>
                         </subviews>
