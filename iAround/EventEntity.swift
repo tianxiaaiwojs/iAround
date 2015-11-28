@@ -81,7 +81,7 @@ class EventEntity : EntityImpl, Entity{
         let eventEntity = self;
         
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yyyy hh:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         
         let jsonCompatibleArray = [
             EventEntity.eventIdColumnName : eventEntity.eventId,
@@ -100,9 +100,8 @@ class EventEntity : EntityImpl, Entity{
             
             let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonCompatibleArray, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonText = NSString(data: jsonData,encoding: NSUTF8StringEncoding)
-            
-            let jsonSummary = EventEntity.addHeadJson("EventEntity", json : jsonText!)
-            return jsonSummary;
+            //let jsonSummary = EventEntity.addHeadJson("EventEntity", json : jsonText!)
+            return jsonText!;
         }catch{
             
         }
