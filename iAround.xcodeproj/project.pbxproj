@@ -34,6 +34,7 @@
 		11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE53681C0366740020D9A6 /* MapKit.framework */; };
 		11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE536A1C0378020020D9A6 /* CoreLocation.framework */; };
 		34EF49FB1C093CF200F98D9D /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF49FA1C093CF200F98D9D /* EventListViewController.swift */; };
+		5C92F5A61C097D5900982445 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C92F5A51C097D5900982445 /* CreateEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		11BE53681C0366740020D9A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11BE536A1C0378020020D9A6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		34EF49FA1C093CF200F98D9D /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		5C92F5A51C097D5900982445 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				11AAFE5E1C0018E9003FEFF1 /* AppDelegate.swift */,
 				34EF49FA1C093CF200F98D9D /* EventListViewController.swift */,
 				11AAFE601C0018E9003FEFF1 /* LoginViewController.swift */,
+				5C92F5A51C097D5900982445 /* CreateEventViewController.swift */,
 				11AAFE621C0018E9003FEFF1 /* Main.storyboard */,
 				11AAFE681C0018E9003FEFF1 /* Assets.xcassets */,
 				11AAFE6A1C0018E9003FEFF1 /* LaunchScreen.storyboard */,
@@ -243,7 +246,7 @@
 				TargetAttributes = {
 					11AAFE5A1C0018E9003FEFF1 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 83GFZ4ZKFR;
+						DevelopmentTeam = 996FR852WQ;
 					};
 					11AAFE711C0018E9003FEFF1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -311,6 +314,7 @@
 				11AAFE821C00199B003FEFF1 /* MapsViewController.swift in Sources */,
 				11ADA4CE1C08C1670017A6D0 /* EventType.swift in Sources */,
 				11BE53651C0228F20020D9A6 /* Entity.swift in Sources */,
+				5C92F5A61C097D5900982445 /* CreateEventViewController.swift in Sources */,
 				11AAFE841C00220F003FEFF1 /* Service.swift in Sources */,
 				11AAFE5F1C0018E9003FEFF1 /* AppDelegate.swift in Sources */,
 				11ADA4DF1C08E4800017A6D0 /* UserInfo.swift in Sources */,
@@ -444,9 +448,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iAround/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -459,9 +463,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iAround/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
