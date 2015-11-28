@@ -38,6 +38,7 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         
         textUserName.delegate = self;
         textPassword.delegate = self;
+        print(Common.getUserInfo())
         
     }
 
