@@ -217,7 +217,7 @@
                                                 </tableViewCellContentView>
                                                 <animations/>
                                                 <connections>
-                                                    <segue destination="9Qr-X0-qte" kind="modal" id="Wnk-Dg-VSN"/>
+                                                    <segue destination="9Qr-X0-qte" kind="modal" identifier="" id="Wnk-Dg-VSN"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -392,7 +392,7 @@
                                 <animations/>
                                 <state key="normal" title="Join"/>
                                 <connections>
-                                    <action selector="joinEvent:" destination="9Qr-X0-qte" eventType="touchUpInside" id="jRO-l0-bxl"/>
+                                    <action selector="joinEvent:" destination="9Qr-X0-qte" eventType="touchUpInside" id="LBB-AF-UYG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-Fj-lbS">
@@ -414,10 +414,10 @@
                     <navigationItem key="navigationItem" id="rAI-nh-5dl"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="eventDescription" destination="6TM-Fj-lbS" id="xFf-2t-7HC"/>
-                        <outlet property="eventLocation" destination="2Gv-mZ-cmS" id="LW1-fn-dzX"/>
-                        <outlet property="eventTime" destination="qh8-sf-SyC" id="1jw-SS-DYy"/>
-                        <outlet property="eventTitle" destination="cgC-H9-ufy" id="ucO-Pp-2xB"/>
+                        <outlet property="eventDescription" destination="6TM-Fj-lbS" id="kJ0-jp-qVy"/>
+                        <outlet property="eventLocation" destination="2Gv-mZ-cmS" id="tl9-9J-S5x"/>
+                        <outlet property="eventName" destination="cgC-H9-ufy" id="jDw-lO-0pd"/>
+                        <outlet property="eventTime" destination="qh8-sf-SyC" id="HmJ-tD-k1z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="seF-sa-3w5" userLabel="First Responder" sceneMemberID="firstResponder"/>
