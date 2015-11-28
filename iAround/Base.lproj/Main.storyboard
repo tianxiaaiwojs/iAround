@@ -215,7 +215,7 @@
                                         </segments>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="xYb-xA-ZRy">
-                                        <rect key="frame" x="15" y="99" width="291" height="331"/>
+                                        <rect key="frame" x="9" y="98" width="291" height="331"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,7 +240,7 @@
                                                 </tableViewCellContentView>
                                                 <animations/>
                                                 <connections>
-                                                    <segue destination="9Qr-X0-qte" kind="modal" id="Nja-SP-DMG"/>
+                                                    <segue destination="18q-QP-hyE" kind="modal" identifier="showEvent" id="4rg-3R-leK"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -260,7 +260,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6x-yA-0Qh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="382" y="-1368"/>
+            <point key="canvasLocation" x="374" y="-1417"/>
+        </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="6u5-5l-0f7">
+            <objects>
+                <viewController id="18q-QP-hyE" customClass="EventDetailViewController" customModule="iAround" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QyO-oZ-D7F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8s8-ed-SsM">
+                                <rect key="frame" x="102" y="36" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oZY-dQ-RlR">
+                                <rect key="frame" x="102" y="81" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VKl-eO-0Vw">
+                                <rect key="frame" x="102" y="139" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2JM-2o-dXk">
+                                <rect key="frame" x="102" y="207" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9VT-aA-TxU">
+                                <rect key="frame" x="134" y="269" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="Join"/>
+                                <connections>
+                                    <action selector="joinEvent:" destination="18q-QP-hyE" eventType="touchUpInside" id="3zt-0z-r73"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="eventDescription" destination="2JM-2o-dXk" id="LWQ-E6-YLc"/>
+                        <outlet property="eventLocation" destination="oZY-dQ-RlR" id="CUu-KZ-kPG"/>
+                        <outlet property="eventName" destination="8s8-ed-SsM" id="z1y-wU-HfG"/>
+                        <outlet property="eventTime" destination="VKl-eO-0Vw" id="fmJ-Ol-Ggl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gox-PA-3RJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="478" y="-683"/>
         </scene>
         <!--My Event-->
         <scene sceneID="so3-ol-kvB">
@@ -339,7 +403,6 @@
                     <tabBarItem key="tabBarItem" title="Event Map" image="All-Events-Map" id="pWF-rb-uAg"/>
                     <connections>
                         <outlet property="mapView" destination="W3M-x5-P5M" id="ar0-Zh-Vc7"/>
-                        <segue destination="9Qr-X0-qte" kind="modal" identifier="showEvent" id="7Eh-ss-lZR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gv-JZ-ifx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,79 +429,6 @@
             </objects>
             <point key="canvasLocation" x="-98" y="-1368"/>
         </scene>
-        <!--Event Detail View Controller-->
-        <scene sceneID="lCD-o7-EdE">
-            <objects>
-                <viewController id="9Qr-X0-qte" customClass="EventDetailViewController" customModule="iAround" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="coE-Zs-jET">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cgC-H9-ufy">
-                                <rect key="frame" x="126" y="80" width="81" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Gv-mZ-cmS">
-                                <rect key="frame" x="127" y="124" width="66" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qh8-sf-SyC">
-                                <rect key="frame" x="141" y="187" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GPr-qt-1uu">
-                                <rect key="frame" x="145" y="361" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <state key="normal" title="Join"/>
-                                <connections>
-                                    <action selector="joinEvent:" destination="9Qr-X0-qte" eventType="touchUpInside" id="jRO-l0-bxl"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6TM-Fj-lbS">
-                                <rect key="frame" x="116" y="258" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" id="rMq-St-8TR">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                            </navigationBar>
->>>>>>> 6113c9a0de7360b9837edeb2e9017e1611da82b2
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rAI-nh-5dl"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="eventDescription" destination="6TM-Fj-lbS" id="xFf-2t-7HC"/>
-                        <outlet property="eventLocation" destination="2Gv-mZ-cmS" id="LW1-fn-dzX"/>
-                        <outlet property="eventTime" destination="qh8-sf-SyC" id="1jw-SS-DYy"/>
-                        <outlet property="eventTitle" destination="cgC-H9-ufy" id="ucO-Pp-2xB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="seF-sa-3w5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="382" y="-617"/>
-        </scene>
     </scenes>
     <resources>
         <image name="All-Event-List" width="25" height="25"/>
@@ -446,7 +436,6 @@
         <image name="My-Events" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XVV-5R-zbw"/>
-        <segue reference="Nja-SP-DMG"/>
+        <segue reference="thp-fn-Saa"/>
     </inferredMetricsTieBreakers>
 </document>
