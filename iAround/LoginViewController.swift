@@ -110,11 +110,11 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
             let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
             var userInfo : UserInfo? = Common.getUserInfo();
             if userInfo == nil{
-                userInfo = UserInfo();
+                userInfo = Common.initUserInfo();
             }
-            userInfo!.userId = user.personId;
-            userInfo!.loginName = user.name;
-            userInfo!.password = user.password
+            userInfo?.userId = user.personId;
+            userInfo?.loginName = user.name;
+            userInfo?.password = user.password
             
             Common.setUserInfo(userInfo!);
             return true;

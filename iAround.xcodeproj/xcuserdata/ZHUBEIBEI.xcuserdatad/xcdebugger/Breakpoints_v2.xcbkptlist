@@ -20,16 +20,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "iAround.MapsViewController.init (iAround.MapsViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; iAround.MapsViewController"
+                  symbolName = "iAround.MapsViewController.__deallocating_deinit"
                   moduleName = "iAround"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZHUBEIBEI/Project/iAround/iAround/MapsViewController.swift"
-                  timestampString = "470403572.533549"
+                  timestampString = "470405350.619536"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "58">
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iAround.MapsViewController.init (iAround.MapsViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; iAround.MapsViewController"
+                  moduleName = "iAround"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ZHUBEIBEI/Project/iAround/iAround/MapsViewController.swift"
+                  timestampString = "470405350.619892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "68">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -39,12 +54,12 @@
                   moduleName = "iAround"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ZHUBEIBEI/Project/iAround/iAround/MapsViewController.swift"
-                  timestampString = "470403572.534125"
+                  timestampString = "470405350.620377"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -180,7 +195,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iAround/LoginViewController.swift"
@@ -280,11 +295,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iAround/Common.swift"
-            timestampString = "470386940.726099"
+            timestampString = "470405028.924825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "parseStringToDate(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -296,11 +311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iAround/Common.swift"
-            timestampString = "470386974.720171"
+            timestampString = "470405028.924825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "parseStringToDate(_:dateFormat:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -590,6 +605,22 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "login(_:password:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iAround/LoginViewController.swift"
+            timestampString = "470405128.0029"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
