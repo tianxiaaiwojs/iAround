@@ -16,11 +16,24 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventDescription: UILabel?
     var eventID:String?
     var personID:String?
+    var event: EventEntity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd hh:mm" //format style. Browse online to get a format that fits your needs.
+        //var dateString = dateFormatter.stringFromDate(date)
+        eventName!.text = self.event!.title
+        eventDescription!.text = self.event!.eventDesc
+        eventLocation!.text = self.event!.address
+        eventTime!.text = dateFormatter.stringFromDate(self.event!.eventDate)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
