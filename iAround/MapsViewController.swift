@@ -31,6 +31,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
             locationManager.delegate = self;
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             self.mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+            currentLocation = locationManager.location
             locationManager.startUpdatingLocation()
         }
         mapView.delegate = self;
@@ -168,7 +169,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         var events = [EventEntity]();
         
         var urlString = Service.Instance.retriveEventsUrl();
-        urlString = String(format: urlString, arguments: [currentLocation.coordinate.latitude ,currentLocation.coordinate.longitude,"2000"])
+        urlString = String(format: urlString, arguments: [String(currentLocation.coordinate.latitude) ,String(currentLocation.coordinate.longitude),"2000"])
         
         let url = NSURL(string: urlString)!
         
