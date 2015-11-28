@@ -208,9 +208,6 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         self.presentViewController(alert, animated: true, completion: nil);
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.performSegueWithIdentifier("cancelAddEvent", sender: nil)
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
