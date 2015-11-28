@@ -34,7 +34,7 @@
 		11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE53681C0366740020D9A6 /* MapKit.framework */; };
 		11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE536A1C0378020020D9A6 /* CoreLocation.framework */; };
 		34EF49FB1C093CF200F98D9D /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF49FA1C093CF200F98D9D /* EventListViewController.swift */; };
-		5C92F5A61C097D5900982445 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C92F5A51C097D5900982445 /* CreateEventViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5C92F5A61C097D5900982445 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C92F5A51C097D5900982445 /* CreateEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,7 +246,7 @@
 				TargetAttributes = {
 					11AAFE5A1C0018E9003FEFF1 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 996FR852WQ;
+						DevelopmentTeam = 83GFZ4ZKFR;
 					};
 					11AAFE711C0018E9003FEFF1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -450,7 +450,7 @@
 				INFOPLIST_FILE = iAround/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround1;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -465,7 +465,7 @@
 				INFOPLIST_FILE = iAround/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround1;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
