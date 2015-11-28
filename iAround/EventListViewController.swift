@@ -17,6 +17,8 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     
     let textCellIdentifier = "Cell"
 
+    var eventToPass:EventEntity?
+    
     var session : NSURLSession!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +74,10 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         
         task.resume();*/
         
-        return events
+        let event = EventEntity(eventId : 1, createdById : 1, createdBy : "ANdy", title : "Helo", eventDate : NSDate(), latitude : "1233", longitude : "233", eventType : "Sports", numberOfJoin : 10, eventDesc : "fdlkjdskjf re j fdsf", address : "dfkljaf kjer ler ")
+
+        
+        return [event]
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
@@ -127,7 +132,18 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         self.presentViewController(alertPopUp, animated:true, completion:nil)
         
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "showEvent") {
+            if let indexPath = self.eventListTableView.indexPathForSelectedRow{
+                let event = events[indexPath.row]
+                let controller = segue.destinationViewController as! EventDetailViewController
+                controller.event = event
+            }
+        }
+    }
+    
     
     @IBAction func addEvent(sender: AnyObject) {
         self.performSegueWithIdentifier("addEvent", sender: nil)
