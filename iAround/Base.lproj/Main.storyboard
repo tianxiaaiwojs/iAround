@@ -304,7 +304,7 @@
         <!--Event Map-->
         <scene sceneID="LuE-km-Feq">
             <objects>
-                <viewController id="a9n-rw-fdl" sceneMemberID="viewController">
+                <viewController id="a9n-rw-fdl" customClass="MapsViewController" customModule="iAround" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vyt-GP-Ejn"/>
                         <viewControllerLayoutGuide type="bottom" id="Gyz-gs-P5M"/>
@@ -329,6 +329,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Event Map" image="All-Events-Map" id="pWF-rb-uAg"/>
+                    <connections>
+                        <outlet property="mapView" destination="W3M-x5-P5M" id="ar0-Zh-Vc7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gv-JZ-ifx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
