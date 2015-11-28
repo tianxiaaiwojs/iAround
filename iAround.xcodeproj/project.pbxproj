@@ -34,6 +34,7 @@
 		11BE53691C0366740020D9A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE53681C0366740020D9A6 /* MapKit.framework */; };
 		11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE536A1C0378020020D9A6 /* CoreLocation.framework */; };
 		34EF49FB1C093CF200F98D9D /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF49FA1C093CF200F98D9D /* EventListViewController.swift */; };
+		34EF49FD1C0977DA00F98D9D /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF49FC1C0977DA00F98D9D /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		11BE53681C0366740020D9A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		11BE536A1C0378020020D9A6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		34EF49FA1C093CF200F98D9D /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		34EF49FC1C0977DA00F98D9D /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = ../EventDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				11AAFE881C002974003FEFF1 /* Util */,
 				11AAFE851C0028F3003FEFF1 /* Entity */,
 				11AAFE5E1C0018E9003FEFF1 /* AppDelegate.swift */,
+				34EF49FC1C0977DA00F98D9D /* EventDetailViewController.swift */,
 				34EF49FA1C093CF200F98D9D /* EventListViewController.swift */,
 				11AAFE601C0018E9003FEFF1 /* LoginViewController.swift */,
 				11AAFE621C0018E9003FEFF1 /* Main.storyboard */,
@@ -314,6 +317,7 @@
 				11AAFE841C00220F003FEFF1 /* Service.swift in Sources */,
 				11AAFE5F1C0018E9003FEFF1 /* AppDelegate.swift in Sources */,
 				11ADA4DF1C08E4800017A6D0 /* UserInfo.swift in Sources */,
+				34EF49FD1C0977DA00F98D9D /* EventDetailViewController.swift in Sources */,
 				11AAFE671C0018E9003FEFF1 /* iAround.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
