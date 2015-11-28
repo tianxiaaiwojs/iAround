@@ -26,28 +26,14 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(animated: Bool) {
-        /*let url = Service.Instance.retriveEventsUrl();
         
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
-        
-        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        request.HTTPMethod="GET";
-        
-        
-        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
-        
-        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.dataTaskWithRequest(request).resume()*/
-        
-        events = getEvents();
+        getEvents();
     }
 
-    func getEvents() -> Array<EventEntity>{
+    func getEvents() {
         //let events = [EventEntity];
         
         
-        var events = [EventEntity]();
         
         var urlString = Service.Instance.retriveEventsUrl();
         urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
@@ -66,17 +52,34 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
+        session.dataTaskWithRequest(request).resume();
+        /*let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
             for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
             {
                 events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
             }
+            self.eventListTableView.reloadData()
         })
         
-        task.resume();
+        task.resume();*/
         
-        return events
+        //return events
+    }
+    
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+        print(data)
+        //NSNotificationCenter.defaultCenter().postNotificationName("switchWebView", object:nil)
+        let dic = JSONHelper.Instance.parseJSONToDictionary(data)!;
+        for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
+        {
+            events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
+        }
+    }
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        NSNotificationCenter.defaultCenter().postNotificationName("switchResultView", object:nil)
+        self.eventListTableView.reloadData()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

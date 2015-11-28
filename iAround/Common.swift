@@ -56,7 +56,7 @@ class Common{
     }
     
     static func parseStringToDate(string : String) ->NSDate{
-        return parseStringToDate(string, dateFormat: "yyyy-MM-dd hh:mm")
+        return parseStringToDate(string, dateFormat: "yyyy-M-d h:m:s")
     }
     
     static func parseStringToDate(string : String, dateFormat : String) ->NSDate
