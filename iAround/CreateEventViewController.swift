@@ -159,17 +159,23 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     @IBAction func saveEvent(sender: AnyObject){
-        /*let title = textFieldTitle.text!
+        let title = textFieldTitle.text!
         let holdDate = textFieldHoldDate.text!
         let address = textFieldAddress.text!
         let eventType = textFieldEventType.text!
         let noOfJoin = textFieldNoOfJoin.text!
+        let desc = textViewDescription.text!
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.MediumStyle
         
         if (title.isEmpty || holdDate.isEmpty || address.isEmpty || eventType.isEmpty || noOfJoin.isEmpty){
             self.displayAlert("Field is null", message: "Please enter all fields")
         }else{
-            event = Event(title: title, holdDate: holdDate, address: address, latitude: self.latitude, longitude: self.longitude, eventType: eventType, noOfJoin: Int(noOfJoin)!)
-        }*/
+            event = EventEntity(eventId: 0,createdById: (Common.getUserInfo()?.userId)!, createdBy: (Common.getUserInfo()?.loginName)!, title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
+            event.parseEntityToJson();
+        }
     }
     
     func displayAlert(title: String, message: String){

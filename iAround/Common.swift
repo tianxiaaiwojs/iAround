@@ -66,4 +66,10 @@ class Common{
         let date = dateFormatter.dateFromString(string);
         return date!;
     }
+    
+    static func parseStringToDate(string : String, dateFormatter : NSDateFormatter) ->NSDate
+    {
+        let date = dateFormatter.dateFromString(string);
+        return date!;
+    }
 }

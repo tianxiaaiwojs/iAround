@@ -156,10 +156,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
         request.HTTPMethod="GET";
-        
-        
-        
-        
+                
         let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())

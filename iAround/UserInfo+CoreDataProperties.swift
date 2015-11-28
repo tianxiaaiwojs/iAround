@@ -17,6 +17,6 @@ extension UserInfo {
     @NSManaged var loginName: String?
     @NSManaged var password: String?
     @NSManaged var userName: String?
-    @NSManaged var userId: NSNumber?
+    @NSManaged var userId: Int?
 
 }
