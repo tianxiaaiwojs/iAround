@@ -11,17 +11,17 @@ import Foundation
 class EventEntity : EntityImpl{
     var eventId : Int
     var holderId : Int
-    var titile : NSString
+    var title : String
     var holderDate : NSDate
-    var geoCode : NSString
-    var type : NSString
+    var geoCode : String
+    var type : String
     var numberOfJoin : Int
-    var decription : NSString
+    var decription : String
     
-    init(eventId : Int, holderId : Int, title : NSString, holderDate : NSDate, geoCode : NSString, type : NSString, numberOfJoin : Int, decription : NSString){
+    init(eventId : Int, holderId : Int, title : String, holderDate : NSDate, geoCode : String, type : String, numberOfJoin : Int, decription : String){
         self.eventId = eventId;
         self.holderId = holderId;
-        self.titile = title;
+        self.title = title;
         self.holderDate = holderDate;
         self.geoCode = geoCode;
         self.type = type;

@@ -150,7 +150,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         let myHomePin = PinAnnotation();
         myHomePin.setCoordinate(newCoordinate);
         myHomePin.type = event.type as String;
-        myHomePin.title = event.titile as String;
+        myHomePin.title = event.title as String;
         
         self.mapView.addAnnotation(myHomePin)
     }
@@ -164,9 +164,9 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     func getEvents() -> Array<EventEntity>{
         //let events = [EventEntity];
-        let event1 = EventEntity(eventId: 1, holderId: 1, title : "NUS SPORTS", holderDate: NSDate(), geoCode: NSString(string: "1.445215,103.902412"), type: "Sports", numberOfJoin: 6, decription: "")
+        let event1 = EventEntity(eventId: 1, holderId: 1, title : "NUS SPORTS", holderDate: NSDate(), geoCode: "1.445215,103.902412", type: "Sports", numberOfJoin: 6, decription: "")
         
-        let event2 = EventEntity(eventId: 2, holderId: 2, title : "China Travel" , holderDate: NSDate(), geoCode: NSString(string: "1.405215,103.902412"), type: "Travel", numberOfJoin: 8, decription: "")
+        let event2 = EventEntity(eventId: 2, holderId: 2, title : "China Travel" , holderDate: NSDate(), geoCode: "1.405215,103.902412", type: "Travel", numberOfJoin: 8, decription: "")
         
         return [event1, event2]
     }
