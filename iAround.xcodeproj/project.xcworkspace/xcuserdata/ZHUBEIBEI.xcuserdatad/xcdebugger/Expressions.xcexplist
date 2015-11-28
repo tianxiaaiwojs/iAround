@@ -10,5 +10,33 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "LoginViewController.viewDidLoad() -&gt; ():LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userInfoObject?.loginName">
+            </PersistentString>
+            <PersistentString
+               value = "userInfoObject?.password">
+            </PersistentString>
+            <PersistentString
+               value = "userInfoObject">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "JSONHelper.parseJSONToDictionary(NSData) -&gt; NSDictionary?:JSONHelper.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MapsViewController.getEvents() -&gt; [EventEntity]:MapsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentLocation.coordinate.latitude">
+            </PersistentString>
+            <PersistentString
+               value = "currentLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

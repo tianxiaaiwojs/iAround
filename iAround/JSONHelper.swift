@@ -51,4 +51,16 @@ class JSONHelper{
         }
         return nil;
     }
+    
+    func parseJSONToArrayDictionary(data : NSData) ->Array<Dictionary<String, AnyObject>>?{
+        do{
+            let jsonOptional = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! Array<Dictionary<String, AnyObject>>
+            
+            return jsonOptional;
+        }
+        catch{
+            
+        }
+        return nil;
+    }
 }

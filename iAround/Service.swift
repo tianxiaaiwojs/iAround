@@ -16,7 +16,7 @@ public class Service{
     private init(){}
     
     public func loginUrl() -> String{
-        return ((rootUrl as String) + "Login");
+        return ((rootUrl as String) + "Login1");
     }
     
     public func retriveEventsUrl() -> String{

@@ -35,6 +35,7 @@
 		11BE536B1C0378020020D9A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BE536A1C0378020020D9A6 /* CoreLocation.framework */; };
 		34EF49FB1C093CF200F98D9D /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EF49FA1C093CF200F98D9D /* EventListViewController.swift */; };
 		5C92F5A61C097D5900982445 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C92F5A51C097D5900982445 /* CreateEventViewController.swift */; };
+		EBCA11221C09C28E002BA010 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCA11211C09C28E002BA010 /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		11BE536A1C0378020020D9A6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		34EF49FA1C093CF200F98D9D /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		5C92F5A51C097D5900982445 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		EBCA11211C09C28E002BA010 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				34EF49FA1C093CF200F98D9D /* EventListViewController.swift */,
 				11AAFE601C0018E9003FEFF1 /* LoginViewController.swift */,
 				5C92F5A51C097D5900982445 /* CreateEventViewController.swift */,
+				EBCA11211C09C28E002BA010 /* EventDetailViewController.swift */,
 				11AAFE621C0018E9003FEFF1 /* Main.storyboard */,
 				11AAFE681C0018E9003FEFF1 /* Assets.xcassets */,
 				11AAFE6A1C0018E9003FEFF1 /* LaunchScreen.storyboard */,
@@ -314,6 +317,7 @@
 				11AAFE821C00199B003FEFF1 /* MapsViewController.swift in Sources */,
 				11ADA4CE1C08C1670017A6D0 /* EventType.swift in Sources */,
 				11BE53651C0228F20020D9A6 /* Entity.swift in Sources */,
+				EBCA11221C09C28E002BA010 /* EventDetailViewController.swift in Sources */,
 				5C92F5A61C097D5900982445 /* CreateEventViewController.swift in Sources */,
 				11AAFE841C00220F003FEFF1 /* Service.swift in Sources */,
 				11AAFE5F1C0018E9003FEFF1 /* AppDelegate.swift in Sources */,
@@ -448,7 +452,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iAround/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -463,7 +467,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = iAround/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.nus.iss.team3.iAround1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
