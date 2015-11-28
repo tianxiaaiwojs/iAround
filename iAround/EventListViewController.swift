@@ -9,7 +9,7 @@
 
 import UIKit
 
-class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLSessionDataDelegate{
     
     @IBOutlet weak var eventListTableView: UITableView!
 
@@ -17,7 +17,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     
     let textCellIdentifier = "Cell"
 
-    
+    var session : NSURLSession!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,11 +45,38 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
 
     func getEvents() -> Array<EventEntity>{
         //let events = [EventEntity];
-        let event1 = EventEntity(eventId: 1, holderId: 1, title : "NUS SPORTS", holderDate: NSDate(), geoCode: "1.445215,103.902412", type: "Sports", numberOfJoin: 6, decription: "")
         
-        let event2 = EventEntity(eventId: 2, holderId: 2, title : "China Travel" , holderDate: NSDate(), geoCode: "1.405215,103.902412", type: "Travel", numberOfJoin: 8, decription: "")
         
-        return [event1, event2]
+        var events = [EventEntity]();
+        
+        var urlString = Service.Instance.retriveEventsUrl();
+        urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
+        
+        let url = NSURL(string: urlString)!
+        
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
+        
+        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        request.HTTPMethod="GET";
+        
+        
+        
+        
+        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        
+        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
+            let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
+            for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
+            {
+                events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
+            }
+        })
+        
+        task.resume();
+        
+        return events
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +94,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         let row = indexPath.row
         let event = events[row] ;
         cell.textLabel?.text = event.title
-        cell.detailTextLabel?.text = "Date: \(event.holderDate)"
+        cell.detailTextLabel?.text = "Date: \(event.eventDate)"
         
         return cell
     }

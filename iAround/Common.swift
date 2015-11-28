@@ -43,4 +43,27 @@ class Common{
         }
         return nil;
     }
+    
+    static func setUserInfo(user : UserInfo){
+        
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        var userInfoObject = getUserInfo();
+        do{
+            try managedObjectContext.save()
+        }catch{
+            //Donothing
+        }
+    }
+    
+    static func parseStringToDate(string : String) ->NSDate{
+        return parseStringToDate(string, dateFormat: "yyyy-MM-dd hh:mm")
+    }
+    
+    static func parseStringToDate(string : String, dateFormat : String) ->NSDate
+    {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = dateFormat;
+        let date = dateFormatter.dateFromString(string);
+        return date!;
+    }
 }

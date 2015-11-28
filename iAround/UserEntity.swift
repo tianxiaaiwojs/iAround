@@ -10,22 +10,19 @@ import Foundation
 
 class UserEntity : EntityImpl ,Entity{
     var personId : Int
-    var primaryId : NSString
-    var password : NSString
-    var name : NSString
-    var gender : NSString
-    var contactNo : NSString
+    var password : String
+    var name : String
+    var gender : String
+    var contactNo : String
     
-    static private var personIdColumnName = "PersonId"
-    static private var primaryIdColumnName = "PrimaryId"
+    static private var personIdColumnName = "ID"
     static private var passwordColumnName = "Password"
     static private var nameColumnName = "Name"
-    static private var genderColumnName = "Gender"
+    static private var genderColumnName = "Sex"
     static private var contactNoColumnName = "ContactNo"
     
-    init(personId : Int, primaryId : NSString, password : NSString, name : NSString, gender : NSString, contactNo : NSString){
+    init(personId : Int, password : String, name : String, gender : String, contactNo : String){
         self.personId = personId;
-        self.primaryId = primaryId;
         self.password = password;
         self.name = name;
         self.gender = gender;
@@ -34,7 +31,6 @@ class UserEntity : EntityImpl ,Entity{
     
     private override init(){
         self.personId = -1;
-        self.primaryId = "";
         self.password = "";
         self.name = "";
         self.gender = "";
@@ -43,41 +39,29 @@ class UserEntity : EntityImpl ,Entity{
     
     init(primaryId : String, password : String){
         self.personId = -1;
-        self.primaryId = primaryId;
         self.password = password;
         self.name = "";
         self.gender = "";
         self.contactNo = "";
     }
     
-    static func parseJsonToEntity(data : NSData) ->Entity{
+    static func parseJsonToEntity(json : Dictionary<String, AnyObject>) ->Entity?{
         
-        do{
-            let jsonOptional : AnyObject! = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
-            
-            
-            if let json = jsonOptional as? Dictionary<String, AnyObject>
-            {
-                if let tmpPersonId = json[UserEntity.personIdColumnName] as AnyObject? as? Int { // Currently in beta 5 there is a bug that forces us to cast to AnyObject? first
-                    if let tmpPrimary = json[UserEntity.primaryIdColumnName] as AnyObject? as? String {
-                        if let tmpPassword = json[UserEntity.passwordColumnName] as AnyObject? as? String {
-                            if let tmpName = json[UserEntity.nameColumnName] as AnyObject? as? String{
-                                if let tmpGender = json[UserEntity.genderColumnName] as AnyObject? as? String{
-                                    if let tmpContactNo = json[UserEntity.contactNoColumnName] as AnyObject? as? String{
-                                        return UserEntity( personId : tmpPersonId, primaryId : tmpPrimary,password : tmpPassword, name : tmpName, gender : tmpGender, contactNo : tmpContactNo);
-                                    }
-                                }
-                            }
+        
+        if let tmpPersonId = json[UserEntity.personIdColumnName] as AnyObject? as? Int {
+            if let tmpPassword = json[UserEntity.passwordColumnName] as AnyObject? as? String {
+                if let tmpName = json[UserEntity.nameColumnName] as AnyObject? as? String{
+                    if let tmpGender = json[UserEntity.genderColumnName] as AnyObject? as? String{
+                        if let tmpContactNo = json[UserEntity.contactNoColumnName] as AnyObject? as? String{
+                            return UserEntity( personId : tmpPersonId, password : tmpPassword, name : tmpName, gender : tmpGender, contactNo : tmpContactNo);
                         }
                     }
                 }
             }
             
-        }catch{
-            
         }
         
-        return UserEntity();
+        return nil
 
     }
     
@@ -87,8 +71,7 @@ class UserEntity : EntityImpl ,Entity{
         let userEntity = self;
         
         let jsonCompatibleArray = [
-            UserEntity.personIdColumnName : userEntity.contactNo,
-            UserEntity.primaryIdColumnName : userEntity.primaryId,
+            UserEntity.personIdColumnName : userEntity.personId,
             UserEntity.passwordColumnName : userEntity.password,
             UserEntity.nameColumnName : userEntity.name,
             UserEntity.genderColumnName : userEntity.gender,

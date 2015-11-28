@@ -33,21 +33,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     }
     
     override func viewWillAppear(animated: Bool) {
-        /*let url = Service.Instance.retriveEventsUrl();
         
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
-        
-        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        
-        request.HTTPMethod="GET";
-        
-        
-        
-        
-        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
-        
-        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.dataTaskWithRequest(request).resume()*/
         
         var events = getEvents();
         setEventsAnnotateMap(events);
@@ -118,7 +104,6 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         if(view.annotation is PinAnnotation){
-            var pinAnnotation = view.annotation as! PinAnnotation;
             
         }
     }
@@ -127,18 +112,12 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     
     func annotateMap (event : EventEntity){
-        let geoCodeArr = event.geoCode.componentsSeparatedByString(",");
-        let latitude = Double(geoCodeArr[0]);
-        let longitude = Double(geoCodeArr[1]);
+        
+        let latitude = Double(event.latitude);
+        let longitude = Double(event.longitude);
         var newCoordinate : CLLocationCoordinate2D = CLLocationCoordinate2D();
         newCoordinate.latitude = latitude!;
         newCoordinate.longitude = longitude!;
-        
-        let latDelta : CLLocationDegrees = 0.01;
-        let longDelta : CLLocationDegrees = 0.01;
-        let theSpan : MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-        let myLocation : CLLocationCoordinate2D = newCoordinate
-        
         
         
         //let theRegion : MKCoordinateRegion = MKCoordinateRegionMake(myLocation, theSpan);
@@ -149,7 +128,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         
         let myHomePin = PinAnnotation();
         myHomePin.setCoordinate(newCoordinate);
-        myHomePin.type = event.type as String;
+        myHomePin.type = event.eventType;
         myHomePin.title = event.title as String;
         
         self.mapView.addAnnotation(myHomePin)
@@ -164,11 +143,37 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     func getEvents() -> Array<EventEntity>{
         //let events = [EventEntity];
-        let event1 = EventEntity(eventId: 1, holderId: 1, title : "NUS SPORTS", holderDate: NSDate(), geoCode: "1.445215,103.902412", type: "Sports", numberOfJoin: 6, decription: "")
         
-        let event2 = EventEntity(eventId: 2, holderId: 2, title : "China Travel" , holderDate: NSDate(), geoCode: "1.405215,103.902412", type: "Travel", numberOfJoin: 8, decription: "")
+        var events = [EventEntity]();
         
-        return [event1, event2]
+        var urlString = Service.Instance.retriveEventsUrl();
+        urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
+        
+        let url = NSURL(string: urlString)!
+        
+        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
+        
+        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        request.HTTPMethod="GET";
+        
+        
+        
+        
+        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        
+        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
+            let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
+            for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
+            {
+                events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
+            }
+        })
+        
+        task.resume();
+        
+        return events
     }
     
 }

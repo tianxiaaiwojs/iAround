@@ -54,7 +54,9 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
     }
     
     func login(loginName : String, password : String) {
-        let url = Service.Instance.loginUrl();
+        let urlString = Service.Instance.loginUrl();
+        
+        let url = NSURL(string : urlString)!;
         
         let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
         

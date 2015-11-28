@@ -15,11 +15,11 @@ public class Service{
     private let rootUrl : NSString = NSString(string : "http://52.32.120.191:8000/IEvent/EventsManager/reset/");
     private init(){}
     
-    public func loginUrl() -> NSURL{
-        return NSURL(string : ((rootUrl as String) + "Login"))!;
+    public func loginUrl() -> String{
+        return ((rootUrl as String) + "Login");
     }
     
-    public func retriveEventsUrl() -> NSURL{
-        return NSURL(string : ((rootUrl as String) + "RetriveEvents/{0}/{1}/{2}"))!
+    public func retriveEventsUrl() -> String{
+        return ((rootUrl as String) + "RetriveEvents/%@/%@/%@")
     }
 }
