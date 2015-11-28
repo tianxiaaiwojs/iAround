@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class LoginViewController: UIViewController,NSURLSessionDataDelegate {
+class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var textUserName : UITextField!;
     @IBOutlet weak var textPassword : UITextField!;
@@ -31,10 +31,11 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
         userInfoObject = Common.getUserInfo();
         if(userInfoObject != nil){
             login((userInfoObject?.loginName)!, password: (userInfoObject?.password)!)
-            if(loginSuccessful){
-                self.performSegueWithIdentifier("loginSuccess", sender: nil)
-            }
+            
         }
+        
+        textUserName.delegate = self;
+        textPassword.delegate = self;
         
     }
 
@@ -43,26 +44,32 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textPassword.resignFirstResponder()
+        textUserName.resignFirstResponder()
+        return true;
+    }
     
     
     
     @IBAction func login(){
         login(textUserName.text!, password: textPassword.text!)
-        if(loginSuccessful){
-            self.performSegueWithIdentifier("loginSuccess", sender: nil)
-        }
+        
     }
     
     func login(loginName : String, password : String) {
+        textUserName.resignFirstResponder()
+        textPassword.resignFirstResponder()
+        
         let urlString = Service.Instance.loginUrl();
         
         let url = NSURL(string : urlString)!;
         
         let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
         
-        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.HTTPMethod="GET";
+        request.HTTPMethod="POST";
         
         //let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
         
@@ -81,18 +88,31 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate {
         let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.dataTaskWithRequest(request).resume()
+        session.dataTaskWithRequest(request).resume();
+        
     }
     
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
-        print(data)
         //NSNotificationCenter.defaultCenter().postNotificationName("switchWebView", object:nil)
+        let dic = JSONHelper.Instance.parseJSONToDictionary(data)! as! Dictionary<String, AnyObject>;
+        
+        let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
+        var userInfo : UserInfo? = Common.getUserInfo();
+        if userInfo == nil{
+            userInfo = UserInfo();
+        }
+        userInfo!.userId = user.personId;
+        userInfo!.loginName = user.name;
+        userInfo!.password = user.password
+        
+        Common.setUserInfo(userInfo!);
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         NSNotificationCenter.defaultCenter().postNotificationName("switchResultView", object:nil)
         loginSuccessful = true;
+        self.performSegueWithIdentifier("loginSuccess", sender: nil)
     }
     
     
