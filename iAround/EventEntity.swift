@@ -100,7 +100,6 @@ class EventEntity : EntityImpl, Entity{
             
             let jsonData = try NSJSONSerialization.dataWithJSONObject(jsonCompatibleArray, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonText = NSString(data: jsonData,encoding: NSUTF8StringEncoding)
-            
             //let jsonSummary = EventEntity.addHeadJson("EventEntity", json : jsonText!)
             return jsonText!;
         }catch{
