@@ -67,7 +67,6 @@
                                                 <animations/>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
-                                                    <action selector="backAction" destination="as7-jv-qJn" eventType="touchUpInside" id="Nlv-pA-bRc"/>
                                                     <segue destination="tCC-Lc-ddS" kind="modal" identifier="cancelAddEvent" id="XVV-5R-zbw"/>
                                                 </connections>
                                             </button>
