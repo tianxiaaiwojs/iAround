@@ -102,7 +102,7 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         
         let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
         
-        return true;
+        //return true;
         
         if(data != nil){
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)! as! Dictionary<String, AnyObject>;

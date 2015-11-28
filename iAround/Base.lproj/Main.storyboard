@@ -217,7 +217,7 @@
                                                 </tableViewCellContentView>
                                                 <animations/>
                                                 <connections>
-                                                    <segue destination="9Qr-X0-qte" kind="modal" id="Wnk-Dg-VSN"/>
+                                                    <segue destination="9Qr-X0-qte" kind="modal" identifier="showEvent" id="Wnk-Dg-VSN"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -331,11 +331,12 @@
                     <tabBarItem key="tabBarItem" title="Event Map" image="All-Events-Map" id="pWF-rb-uAg"/>
                     <connections>
                         <outlet property="mapView" destination="W3M-x5-P5M" id="ar0-Zh-Vc7"/>
+                        <segue destination="9Qr-X0-qte" kind="modal" identifier="showEvent" id="7Eh-ss-lZR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gv-JZ-ifx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="388" y="-2063"/>
+            <point key="canvasLocation" x="398" y="-2325"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="G3A-fJ-M03">
@@ -434,6 +435,7 @@
         <image name="My-Events" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7Eh-ss-lZR"/>
         <segue reference="XVV-5R-zbw"/>
     </inferredMetricsTieBreakers>
 </document>
