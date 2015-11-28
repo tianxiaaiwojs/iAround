@@ -19,6 +19,8 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     var session : NSURLSession!
     
+    var currentLocation : CLLocation!
+    
     //var events:[EventEntity] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
+        currentLocation = locationObj
         let coord = locationObj.coordinate
         
         print(coord.latitude)
@@ -79,6 +82,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
             if(control == view.leftCalloutAccessoryView){
                 print("XXX")
                 print(pinAnnotation.title)
+                self.performSegueWithIdentifier("showEvent", sender: nil)
             }
         }
     }
@@ -103,6 +107,18 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
             return pinAnnotationView
         }
         return nil;
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showEvent" {
+            var nextScene =  segue.destinationViewController;
+            
+            // Pass the selected object to the new view controller.
+            /*if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let selectedVehicle = vehicles[indexPath.row]
+                nextScene.currentVehicle = selectedVehicle
+            }*/
+        }
     }
     
     
@@ -136,6 +152,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         myHomePin.setCoordinate(newCoordinate);
         myHomePin.type = event.eventType;
         myHomePin.title = event.title as String;
+        myHomePin.event = event;
         
         self.mapView.addAnnotation(myHomePin)
     }
@@ -151,7 +168,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         var events = [EventEntity]();
         
         var urlString = Service.Instance.retriveEventsUrl();
-        urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
+        urlString = String(format: urlString, arguments: [currentLocation.coordinate.latitude ,currentLocation.coordinate.longitude,"2000"])
         
         let url = NSURL(string: urlString)!
         

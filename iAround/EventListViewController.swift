@@ -33,10 +33,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     func getEvents() -> [EventEntity]{
-        
-        
-        
-        
+                
         var urlString = Service.Instance.retriveEventsUrl();
         urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
         

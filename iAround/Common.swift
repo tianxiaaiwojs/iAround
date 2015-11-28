@@ -55,6 +55,13 @@ class Common{
         }
     }
     
+    static func initUserInfo() -> UserInfo{
+        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        let entityDesription = NSEntityDescription.entityForName("UserInfo", inManagedObjectContext: managedObjectContext)
+        
+        return UserInfo(entity : entityDesription!, insertIntoManagedObjectContext : managedObjectContext);
+    }
+    
     static func parseStringToDate(string : String) ->NSDate{
         return parseStringToDate(string, dateFormat: "yyyy-M-d h:m:s")
     }

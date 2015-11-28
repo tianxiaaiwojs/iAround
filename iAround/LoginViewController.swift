@@ -100,10 +100,12 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         //let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         var response : NSURLResponse?;
+        return true;
         
         let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
         
-        return true;
+        //return true;
+        
         
         if(data != nil){
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)! as! Dictionary<String, AnyObject>;
@@ -111,11 +113,11 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
             let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
             var userInfo : UserInfo? = Common.getUserInfo();
             if userInfo == nil{
-                userInfo = UserInfo();
+                userInfo = Common.initUserInfo();
             }
-            userInfo!.userId = user.personId;
-            userInfo!.loginName = user.name;
-            userInfo!.password = user.password
+            userInfo?.userId = user.personId;
+            userInfo?.loginName = user.name;
+            userInfo?.password = user.password
             
             Common.setUserInfo(userInfo!);
             return true;
