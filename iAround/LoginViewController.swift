@@ -30,7 +30,9 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         // Do any additional setup after loading the view, typically from a nib.
         userInfoObject = Common.getUserInfo();
         if(userInfoObject != nil){
-            login((userInfoObject?.loginName)!, password: (userInfoObject?.password)!)
+            if(login((userInfoObject?.loginName)!, password: (userInfoObject?.password)!)){
+                self.performSegueWithIdentifier("loginSuccess", sender: nil)
+            }
             
         }
         
@@ -53,11 +55,20 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
     
     
     @IBAction func login(){
-        login(textUserName.text!, password: textPassword.text!)
+        if(login(textUserName.text!, password: textPassword.text!)){
+            self.performSegueWithIdentifier("loginSuccess", sender: nil)
+        }else{
+            let alertPopUp : UIAlertController = UIAlertController(title: "Alert", message: "InCorrect userId or password", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "Ok", style: .Cancel){ action -> Void in}
+            
+            alertPopUp.addAction(cancelAction);
+            self.presentViewController(alertPopUp, animated: true, completion: nil)
+        }
         
     }
     
-    func login(loginName : String, password : String) {
+    func login(loginName : String, password : String) -> Bool{
         textUserName.resignFirstResponder()
         textPassword.resignFirstResponder()
         
@@ -85,17 +96,40 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         //conn.start()
         
         
-        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        //let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
-        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.dataTaskWithRequest(request).resume();
+        var response : NSURLResponse?;
+        
+        let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
+        
+        return true;
+        
+        if(data != nil){
+            let dic = JSONHelper.Instance.parseJSONToDictionary(data!)! as! Dictionary<String, AnyObject>;
+            
+            let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
+            var userInfo : UserInfo? = Common.getUserInfo();
+            if userInfo == nil{
+                userInfo = UserInfo();
+            }
+            userInfo!.userId = user.personId;
+            userInfo!.loginName = user.name;
+            userInfo!.password = user.password
+            
+            Common.setUserInfo(userInfo!);
+            return true;
+        }
+        
+        return false;
+        /*session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        session.dataTaskWithRequest(request).resume();*/
         
     }
     
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
         //NSNotificationCenter.defaultCenter().postNotificationName("switchWebView", object:nil)
-        let dic = JSONHelper.Instance.parseJSONToDictionary(data)! as! Dictionary<String, AnyObject>;
+        /*let dic = JSONHelper.Instance.parseJSONToDictionary(data)! as! Dictionary<String, AnyObject>;
         
         let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
         var userInfo : UserInfo? = Common.getUserInfo();
@@ -106,7 +140,7 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         userInfo!.loginName = user.name;
         userInfo!.password = user.password
         
-        Common.setUserInfo(userInfo!);
+        Common.setUserInfo(userInfo!);*/
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {

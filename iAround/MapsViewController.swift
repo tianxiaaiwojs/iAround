@@ -19,7 +19,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     var session : NSURLSession!
     
-    var events:[EventEntity] = []
+    //var events:[EventEntity] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,23 +37,22 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     override func viewWillAppear(animated: Bool) {
         
         
-        getEvents();
-        setEventsAnnotateMap(events);
+        setEventsAnnotateMap(getEvents());
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
         print(data)
         //NSNotificationCenter.defaultCenter().postNotificationName("switchWebView", object:nil)
-        let dic = JSONHelper.Instance.parseJSONToDictionary(data)!;
+        /*let dic = JSONHelper.Instance.parseJSONToDictionary(data)!;
         for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
         {
             events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
-        }
+        }*/
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         NSNotificationCenter.defaultCenter().postNotificationName("switchResultView", object:nil)
-        setEventsAnnotateMap(events);
+        //setEventsAnnotateMap(events);
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,8 +147,8 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         }
     }
     
-    func getEvents(){
-        //let events = [EventEntity];
+    func getEvents() -> [EventEntity]{
+        var events = [EventEntity]();
         
         var urlString = Service.Instance.retriveEventsUrl();
         urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
@@ -165,10 +164,23 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         
         
         
-        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        //let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        var response : NSURLResponse?;
         
-        session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.dataTaskWithRequest(request).resume();
+        let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
+        
+        if(data != nil){
+            let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
+            for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
+            {
+                events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
+            }
+        }
+        
+        
+        return events;
+        //session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        //session.dataTaskWithRequest(request).resume();
         /*let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
             for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)

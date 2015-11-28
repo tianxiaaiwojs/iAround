@@ -27,11 +27,11 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewWillAppear(animated: Bool) {
         
-        getEvents();
+        events = getEvents();
     }
 
-    func getEvents() {
-        //let events = [EventEntity];
+    func getEvents() -> [EventEntity]{
+        
         
         
         
@@ -46,14 +46,25 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         
         request.HTTPMethod="GET";
         
+        var response : NSURLResponse?;
+        
+        let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
         
         
+        if(data != nil){
+            let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
+            for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
+            {
+                events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
+            }
+        }
         
-        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        
+        /*let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
         session.dataTaskWithRequest(request).resume();
-        /*let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
+        let task = session.dataTaskWithRequest(request,completionHandler: {(data, reponse, error) in
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
             for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
             {
@@ -64,22 +75,22 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         
         task.resume();*/
         
-        //return events
+        return events
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
-        print(data)
+        /*print(data)
         //NSNotificationCenter.defaultCenter().postNotificationName("switchWebView", object:nil)
         let dic = JSONHelper.Instance.parseJSONToDictionary(data)!;
         for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
         {
             events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
-        }
+        }*/
     }
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         NSNotificationCenter.defaultCenter().postNotificationName("switchResultView", object:nil)
-        self.eventListTableView.reloadData()
+        //self.eventListTableView.reloadData()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,19 +108,11 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         let row = indexPath.row
         let event = events[row] ;
         cell.textLabel?.text = event.title
-        cell.detailTextLabel?.text = "Date: \(event.eventDate)"
+//        cell.detailTextLabel?.text = "Date: \(event.eventDate)"
         
         return cell
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = indexPath.row
-        
-        let event = events[row];
-        
-        // need to add the call for sending the event to nextpage
-    }
-    
+
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         let row = indexPath.row
         
