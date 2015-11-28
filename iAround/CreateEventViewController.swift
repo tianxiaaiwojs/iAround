@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, NSURLSessionDataDelegate{
     
     @IBOutlet weak var textFieldTitle: UITextField!
     @IBOutlet weak var textFieldHoldDate: UITextField!
@@ -18,9 +18,9 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
     @IBOutlet weak var textFieldEventType: UITextField!
     @IBOutlet weak var textFieldNoOfJoin: UITextField!
     @IBOutlet weak var textViewDescription: UITextView!
-    
     @IBOutlet weak var buttonDone: UIButton!
     
+    var session : NSURLSession!
     var event: EventEntity!
     var latitude:Double = 0.0
     var longitude:Double = 0.0
@@ -173,8 +173,30 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         if (title.isEmpty || holdDate.isEmpty || address.isEmpty || eventType.isEmpty || noOfJoin.isEmpty){
             self.displayAlert("Field is null", message: "Please enter all fields")
         }else{
-            event = EventEntity(eventId: 0,createdById: (Common.getUserInfo()?.userId)!, createdBy: (Common.getUserInfo()?.loginName)!, title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
-            event.parseEntityToJson();
+            //event = EventEntity(eventId: 0,createdById: Int((Common.getUserInfo()?.userId)!), createdBy: (Common.getUserInfo()?.loginName)!, title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
+            event = EventEntity(eventId: 0,createdById: 2, createdBy: "Mon", title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
+            
+            let urlString = Service.Instance.addEventUrl();
+            
+            let url = NSURL(string : urlString)!;
+            
+            let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            request.HTTPMethod="POST";
+            
+            let eventJSONData = event.parseEntityToJson();
+            
+            let postData : NSData! = eventJSONData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
+            request.HTTPBody = postData
+            
+            let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+            
+            session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+            
+            session.dataTaskWithRequest(request).resume()
         }
     }
     

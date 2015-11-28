@@ -22,4 +22,8 @@ public class Service{
     public func retriveEventsUrl() -> String{
         return ((rootUrl as String) + "RetriveEvents/%@/%@/%@")
     }
+    
+    public func addEventUrl() -> String{
+        return ((rootUrl as String) + "AddEvent")
+    }
 }

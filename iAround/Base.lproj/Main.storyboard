@@ -248,6 +248,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <animations/>
                                                 <state key="normal" title="Done"/>
+                                                <connections>
+                                                    <action selector="saveEvent:" destination="as7-jv-qJn" eventType="touchUpInside" id="DXg-eg-ED5"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
