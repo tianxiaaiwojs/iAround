@@ -41,7 +41,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         textFieldAddress.delegate = self
         textFieldNoOfJoin.delegate = self
         
-        eventTypes = ["option1","option2","option3"]
+        eventTypes = [EventType.Sports.rawValue,EventType.Travel.rawValue,EventType.Party.rawValue]
         let pickerViewEventType: UIPickerView = UIPickerView()
         pickerViewEventType.delegate = self
         pickerViewEventType.dataSource = self
@@ -91,13 +91,15 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
         return true;
     }
-    func textFieldDidBeginEditing(textField: UITextField) {            if(textFieldTitle.text!.isEmpty){
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if(textFieldTitle.text!.isEmpty){
         buttonDone.enabled = false
     }else{
         buttonDone.enabled = true
         }
     }
-    func textFieldDidEndEditing(textField: UITextField) {        if(textFieldTitle.text!.isEmpty){
+    func textFieldDidEndEditing(textField: UITextField) {
+        if(textFieldTitle.text!.isEmpty){
         buttonDone.enabled = false
     }else{
         buttonDone.enabled = true
