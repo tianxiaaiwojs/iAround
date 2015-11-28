@@ -72,13 +72,13 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = indexPath.row
-        
-        let event = events[row];
-        
-        // need to add the call for sending the event to nextpage
-    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let row = indexPath.row
+//        
+//        let event = events[row];
+//        
+//        // need to add the call for sending the event to nextpage
+//    }
     
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         let row = indexPath.row
@@ -101,5 +101,18 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func addEvent(sender: AnyObject) {
         self.performSegueWithIdentifier("addEvent", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showEvent" {
+            if let indexPath = self.eventListTableView.indexPathForSelectedRow {
+                let event = events[indexPath.row]
+                print("Event id selected: \(event.title)")
+                //                let object = objects[indexPath.row] as! NSDate
+                let controller = segue.destinationViewController as! EventDetailViewController
+                //                controller.detailItem = object
+                controller.event = event
+            }
+        }
     }
 }
