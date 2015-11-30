@@ -28,13 +28,13 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        userInfoObject = Common.getUserInfo();
+        /*userInfoObject = Common.getUserInfo();
         if(userInfoObject != nil){
             if(login((userInfoObject?.loginName)!, password: (userInfoObject?.password)!)){
                 self.performSegueWithIdentifier("loginSuccess", sender: nil)
             }
             
-        }
+        }*/
         
         textUserName.delegate = self;
         textPassword.delegate = self;
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         //let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         var response : NSURLResponse?;
-        return true;
+        //return true;
         
         let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
         
@@ -110,21 +110,23 @@ class LoginViewController: UIViewController,NSURLSessionDataDelegate, UITextFiel
         if(data != nil){
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)! as! Dictionary<String, AnyObject>;
             
-            do{let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
-                var userInfo : UserInfo? = Common.getUserInfo();
-                if userInfo == nil{
-                    userInfo = Common.initUserInfo();
+            if let ID = dic["ID"] as AnyObject? as? Int{
+                if ID == 0 {
+                    return false;
                 }
-                userInfo?.userId = user.personId;
-                userInfo?.loginName = user.name;
-                userInfo?.password = user.password
-                
-                Common.setUserInfo(userInfo!);
-                return true;
             }
-            catch{
-                return false;
+            
+            let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
+            var userInfo : UserInfo? = Common.getUserInfo();
+            if userInfo == nil{
+                userInfo = Common.initUserInfo();
             }
+            userInfo?.userId = user.personId;
+            userInfo?.loginName = user.name;
+            userInfo?.password = user.password
+            
+            Common.setUserInfo(userInfo!);
+            return true;
         }
         
         return false;

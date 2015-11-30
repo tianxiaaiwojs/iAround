@@ -17,17 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        if(alreadyLogin()){
-            let viewController : LoginViewController = LoginViewController(nibName : "LoginViewController", bundle : nil);
-            window?.rootViewController = viewController;
-            window?.makeKeyAndVisible()
-        }else{
-            let viewController : MapsViewController = MapsViewController(nibName : "LoginViewController", bundle : nil);
-            window?.rootViewController = viewController;
-            window?.makeKeyAndVisible()
-        }
-        
         return true
     }
 
@@ -116,79 +105,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
-    }
-    
-    func alreadyLogin() -> Bool{
-        let userInfoObject = Common.getUserInfo();
-        if(userInfoObject != nil){
-            if(login((userInfoObject?.loginName)!, password: (userInfoObject?.password)!)){
-                return true;
-            }
-            
-        }
-        return false;
-    }
-    
-    func login(loginName : String, password : String) -> Bool{
-        
-        let urlString = Service.Instance.loginUrl();
-        
-        let url = NSURL(string : urlString)!;
-        
-        let request : NSMutableURLRequest = NSMutableURLRequest(URL: url);
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        request.HTTPMethod="POST";
-        
-        //let user = UserEntity(primaryId: textUserName.text!, password: textPassword.text!)
-        
-        //let postData : NSData! = user.parseEntityToJson().dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
-        //
-        let t = "{\"Name\":\""+loginName+"\",\"Password\":\""+password+"\"}";
-        
-        let postData : NSData! = t.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true);
-        request.HTTPBody = postData
-        
-        //conn = NSURLConnection(request: request, delegate: self)
-        
-        //conn.start()
-        
-        
-        //let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
-        
-        var response : NSURLResponse?;
-        return true;
-        
-        let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
-        
-        //return true;
-        
-        
-        if(data != nil){
-            let dic = JSONHelper.Instance.parseJSONToDictionary(data!)! as! Dictionary<String, AnyObject>;
-            
-            do{let user = UserEntity.parseJsonToEntity(dic) as! UserEntity
-                var userInfo : UserInfo? = Common.getUserInfo();
-                if userInfo == nil{
-                    userInfo = Common.initUserInfo();
-                }
-                userInfo?.userId = user.personId;
-                userInfo?.loginName = user.name;
-                userInfo?.password = user.password
-                
-                Common.setUserInfo(userInfo!);
-                return true;
-            }
-            catch{
-                return false;
-            }
-        }
-        
-        return false;
-        /*session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session.dataTaskWithRequest(request).resume();*/
-        
     }
 
 }

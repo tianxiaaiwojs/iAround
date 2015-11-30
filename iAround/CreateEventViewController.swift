@@ -173,8 +173,8 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
         if (title.isEmpty || holdDate.isEmpty || address.isEmpty || eventType.isEmpty || noOfJoin.isEmpty){
             self.displayAlert("Field is null", message: "Please enter all fields")
         }else{
-            //event = EventEntity(eventId: 0,createdById: Int((Common.getUserInfo()?.userId)!), createdBy: (Common.getUserInfo()?.loginName)!, title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
-            event = EventEntity(eventId: 0,createdById: 2, createdBy: "Mon", title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
+            event = EventEntity(eventId: 0,createdById: Int((Common.getUserInfo()?.userId)!), createdBy: (Common.getUserInfo()?.loginName)!, title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
+//            event = EventEntity(eventId: 0,createdById: 2, createdBy: "Mon", title: title, eventDate: Common.parseStringToDate(holdDate, dateFormatter: dateFormatter), latitude: String(self.latitude), longitude: String(self.longitude), eventType: eventType, numberOfJoin: Int(noOfJoin)!, eventDesc: desc, address: address)
             
             let urlString = Service.Instance.addEventUrl();
             
@@ -203,6 +203,7 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
             let data : NSData? = ((try! NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)));
             
             print(data)
+             self.dismissViewControllerAnimated(true, completion: nil)
             
         }
     }
@@ -213,6 +214,10 @@ class CreateEventViewController: UIViewController, UIPickerViewDataSource, UIPic
             {(action:UIAlertAction!) in}
         alert.addAction(OKAction)
         self.presentViewController(alert, animated: true, completion: nil);
+    }
+    
+    @IBAction func cancelAddEvent(sender: AnyObject){
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

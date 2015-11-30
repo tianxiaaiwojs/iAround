@@ -26,4 +26,8 @@ public class Service{
     public func addEventUrl() -> String{
         return ((rootUrl as String) + "AddEvent")
     }
+    public func retrieveUserJoined()->String{
+//        return(())
+        return ""
+    }
 }

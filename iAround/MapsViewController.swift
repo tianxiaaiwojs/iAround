@@ -21,7 +21,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     
     var currentLocation : CLLocation!
     
-    var event : EventEntity!
+    var event :EventEntity!
     
     //var events:[EventEntity] = []
     override func viewDidLoad() {
@@ -70,7 +70,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
         
         let locationArray = locations as NSArray
         let locationObj = locationArray.lastObject as! CLLocation
-        currentLocation = locationObj
+        //currentLocation = locationObj
         let coord = locationObj.coordinate
         
         print(coord.latitude)
@@ -116,8 +116,7 @@ class MapsViewController: UIViewController , CLLocationManagerDelegate, MKMapVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showEvent" {
             var nextScene =  segue.destinationViewController as! EventDetailViewController;
-            
-            
+            nextScene.event = event;
             // Pass the selected object to the new view controller.
             /*if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let selectedVehicle = vehicles[indexPath.row]

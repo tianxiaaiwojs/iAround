@@ -8,8 +8,9 @@
 
 
 import UIKit
+import CoreLocation
 
-class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLSessionDataDelegate{
+class EventListViewController: UIViewController,CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, NSURLSessionDataDelegate{
     
     @IBOutlet weak var eventListTableView: UITableView!
 
@@ -20,22 +21,37 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     var eventToPass:EventEntity?
     
     var session : NSURLSession!
+    
+    var currentLocation : CLLocation!
+    
+    let locationManager = CLLocationManager();
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        eventListTableView.delegate = self
-        eventListTableView.dataSource = self
+ 
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        events = getEvents();
+        eventListTableView.delegate = self
+        eventListTableView.dataSource = self
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        if(CLLocationManager.locationServicesEnabled()){
+            locationManager.delegate = self;
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            currentLocation = locationManager.location
+            locationManager.startUpdatingLocation()
+        }
+
+        getEvents();
     }
 
-    func getEvents() -> [EventEntity]{
-                
+    func getEvents(){
+        
         var urlString = Service.Instance.retriveEventsUrl();
-        urlString = String(format: urlString, arguments: ["1.405215","103.902412","2000"])
+        urlString = String(format: urlString, arguments: [String(currentLocation.coordinate.latitude) ,String(currentLocation.coordinate.longitude),"2000"])
+
         
         let url = NSURL(string: urlString)!
         
@@ -59,7 +75,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         
-        /*let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
+        let defaultConfigObject  = NSURLSessionConfiguration.defaultSessionConfiguration();
         
         session = NSURLSession(configuration: defaultConfigObject, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
         session.dataTaskWithRequest(request).resume();
@@ -67,17 +83,12 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
             let dic = JSONHelper.Instance.parseJSONToDictionary(data!)!;
             for item in (dic.valueForKey("RetriveEventsResult") as! Array<Dictionary<String, AnyObject>>)
             {
-                events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
+                self.events.append(EventEntity.parseJsonToEntity(item) as! EventEntity);
             }
             self.eventListTableView.reloadData()
         })
         
-        task.resume();*/
-        
-        let event = EventEntity(eventId : 1, createdById : 1, createdBy : "ANdy", title : "Helo", eventDate : NSDate(), latitude : "1233", longitude : "233", eventType : "Sports", numberOfJoin : 10, eventDesc : "fdlkjdskjf re j fdsf", address : "dfkljaf kjer ler ")
-
-        
-        return [event]
+        task.resume();
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
@@ -110,6 +121,9 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         let row = indexPath.row
         let event = events[row] ;
         cell.textLabel?.text = event.title
+        let image : UIImage = Common.getImage(event.eventType)
+        cell.imageView!.image = image
+
 //        cell.detailTextLabel?.text = "Date: \(event.eventDate)"
         
         return cell
@@ -144,6 +158,9 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    @IBAction func changePreference(sender: AnyObject) {
+        
+    }
     
     @IBAction func addEvent(sender: AnyObject) {
         self.performSegueWithIdentifier("addEvent", sender: nil)

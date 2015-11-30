@@ -22,11 +22,7 @@ class PinAnnotation : NSObject, MKAnnotation {
     var type : String = ""
     var title : String? = ""
     var subtitle : String? = ""
-<<<<<<< HEAD
-    var event : EventEntity? = nil
-=======
     var event : EventEntity? = nil;
->>>>>>> origin/master
     
     func setCoordinate(newCoordinate: CLLocationCoordinate2D) {
         self.coord = newCoordinate
